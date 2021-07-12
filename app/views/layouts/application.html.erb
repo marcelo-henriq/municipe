@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MunicipeCrud</title>
+    <title> <%= controller_name.humanize || "MunicipeCrud" %> </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/common/navigation/navbar' %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>
