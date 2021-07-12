@@ -14,14 +14,24 @@
         <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :status, as: :select, collection: [['A', 'Ativo'], ['I', 'Inativo']], label_method: :second, value_method: :first,
           selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        
+        <div class="text-muted text-center my-3 col-md-12">
+          <span> <%= @citizen.address.model_name.human %> </span>
+        </div>
+
+        <%= f.fields_for :address do |ff| %>
+          <%= ff.input :zipcode, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :ibge_code, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :address, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :complement, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :neighborhood, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :city, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :state, as: :select, collection: @states, label_method: :second, value_method: :first,
+          selected: @citizen.address.state || nil, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
+        <% end %>
       </div>
-      <%# f.input :telefone, label: 'Telefone', input_html: { class: 'form-control phonenumber-mask person-phone' }, wrapper_html: { class: 'form-group pmd-textfield col-md-3' } %>
-      <%# f.input :telefone_alt, label: 'Telefone Alternativo', input_html: { class: 'form-control phonenumber-mask person-phone-2' }, wrapper_html: { class: 'form-group pmd-textfield col-md-3' } %>
-      <%# f.input :email, label: 'E-mail', input_html: { class: 'form-control person-email' }, wrapper_html: { class: 'form-group pmd-textfield col-md-9' } %>
-      <%# f.input :status, as: :select, collection: [['A', 'Ativo'], ['I', 'Inativo']], label_method: :second, value_method: :first,
-          selected: @customer.status, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group pmd-textfield col-md-3' } %>
       <div class="row col-md-12 col-sm-12 col-lg-12 text-right">
-          <%# render 'layouts/common/buttons/back',
+          <%= render 'layouts/common/actions/back',
               link: :back %>
           <%= render 'layouts/common/actions/submit' %>
       </div>

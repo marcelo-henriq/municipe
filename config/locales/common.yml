@@ -2,8 +2,10 @@ pt-BR:
   common:
     hello: 'Olá seja bem vindo!'
     empty: 'Nenhum registro encontrado'
+    new_entity: 'Incluir novo %{model}'
+    edit_entity: 'Editar %{model}'
     buttons:
-      add_button: 'Adicionar %{model}'
+      add_button: 'Adicionar'
       filter: 'Pesquisar'
       save: 'Salvar'
       cancel: 'Cancelar'
