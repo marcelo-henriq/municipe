@@ -1,0 +1,19 @@
+<%
+if defined?(button_text)
+  text = button_text
+else
+  text = t('buttons.submit.text')
+end
+%>
+<% bt_name = 'commit' %>
+
+<% button_data = { disable_with: "Salvando..." } %>
+
+<%= button_tag type: :submit,
+               name: bt_name,
+               class: 'btn btn-info btn-icon',
+               data: button_data do %>
+  <span class="btn-inner--icon">
+            <i class="fa fa-save mr-2"></i>
+          </span>  <%= text %>
+<% end %>

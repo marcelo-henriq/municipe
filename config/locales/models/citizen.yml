@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      citizen:
+        one: 'Cidadão'
+        other: 'Cidadãos'
+    attributes:
+      citizen:
+        name: 'Nome completo'
+        cpf: 'CPF somente numeros'
+        cns: 'Código nacional de saude'
+        birth_date: 'Data de nascimento'
+        phonenumber: 'Telefone'
+        photo: 'Foto'
+        status: 'Status'
