@@ -2,7 +2,6 @@ class CitizensController < ApplicationController
   before_action :set_states, only: :new
   def index
     @citizens = Citizen.all.order(:id)
-    binding.pry
   end
 
   def new
@@ -12,7 +11,7 @@ class CitizensController < ApplicationController
 
   def create
     
-    @citizen = Citizen.new(permitted_params)    
+    @citizen = Citizen.new(permitted_params)
     respond_to do |format|
       if @citizen.save
         format.html { redirect_to root_path, notice: "Incluido com sucesso." }

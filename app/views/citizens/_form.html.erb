@@ -10,7 +10,7 @@
         <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :cns, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :photo, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
-        <%= f.input :birth_date, as: :string, input_html: { class: 'form-control form-control-alternative datepicker' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :deafult, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
         <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :status, as: :select, collection: [['A', 'Ativo'], ['I', 'Inativo']], label_method: :second, value_method: :first,
           selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
