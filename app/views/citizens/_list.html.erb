@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th>Name</th>
+            <th>CPF</th>
+            <th>CNS</th>
+            <th>Birth date</th>
+            <th>Phonenumber</th>
+            <th class="text-center">Photo</th>
+            <th class="text-right">Status</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% if @citizens.each do |citizen| %>
+        <tr>
+          <td class="text-center"> <%= citizen.id %> </td>
+          <td> <%= citizen.name %> </td>
+          <td> <%= citizen.cpf %> </td>
+          <td> <%= citizen.cns %> </td>
+          <td class="text-right"> <%= citizen.birth_date.strftime('%d/%m/%Y') if citizen.birth_date.present? %> </td>
+          <td> <%= citizen.formatted_phone %> </td>
+          <td> <%= citizen.photo %> </td>
+          <td class="text-center"> <%= citizen.status %> </td>
+          <td class="td-actions text-right">
+            <%= render 'layouts/common/actions/edit',
+              link: edit_citizen_path(citizen.id) %>
+          </td>
+        </tr>
+      <% end.empty? %>
+        <tr> <span><%= t('common.empty') %></span> </tr>
+      <% end %>
+    </tbody>
+</table>

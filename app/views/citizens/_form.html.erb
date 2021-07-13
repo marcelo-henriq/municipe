@@ -4,7 +4,7 @@
     <div class="text-muted text-center mb-3">
       <%= @citizen.model_name.human %> 
     </div>
-    <%= simple_form_for @citizen, url: citizens_path do |f| %>
+    <%= simple_form_for @citizen, url: url_path do |f| %>
       <%= f.input :name, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group' } %>
       <div class="row">
         <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>

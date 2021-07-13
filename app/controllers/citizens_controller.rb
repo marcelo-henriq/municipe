@@ -1,5 +1,5 @@
 class CitizensController < ApplicationController
-  before_action :set_states, only: :new
+  before_action :set_states, only: [:new, :edit]
   def index
     @citizens = Citizen.all.order(:id)
   end
@@ -10,7 +10,6 @@ class CitizensController < ApplicationController
   end
 
   def create
-    
     @citizen = Citizen.new(permitted_params)
     respond_to do |format|
       if @citizen.save
@@ -20,13 +19,29 @@ class CitizensController < ApplicationController
       end
     end
   end
+
+  def edit
+    @citizen = Citizen.find_by_id(params[:id])
+  end
+  
+  def update
+    @citizen = Citizen.find(params[:id])
+    if @citizen.update_attributes(permitted_params)
+      flash[:success] = "Object was successfully updated"
+      redirect_to citizens_path
+    else
+      flash[:error] = "Something went wrong"
+      render :edit
+    end
+  end
+  
   
   private
 
   def permitted_params
     params.require(:citizen)
-    .permit(:name, :cpf, :cns, :photo, :birth_date, :phonenumber, :status, address_attributes: [
-      :zipcode, :ibge_code, :address, :street, :complement, :neighborhood, :city, :state
+    .permit(:id, :name, :cpf, :cns, :photo, :birth_date, :phonenumber, :status, address_attributes: [
+      :id, :zipcode, :ibge_code, :address, :street, :complement, :neighborhood, :city, :state, :_destroy
     ] )
   end
 
