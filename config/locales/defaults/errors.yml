@@ -6,3 +6,5 @@ pt-BR:
           attributes:
             phonenumber:
               wrong_length: 'Muito pequeno'
+            birth_date:
+              blank: 'Não pode ficar em branco'
