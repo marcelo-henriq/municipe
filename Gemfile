@@ -23,9 +23,13 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # simple form rails
-gem 'simple_form'
+gem 'simple_form', '~> 5.1.0'
 # cpf cnpj utils for generate and valid
-gem "cpf_cnpj"
+gem 'cpf_cnpj', '~> 0.5.0'
+# adding decorators
+gem 'draper', '~> 4.0.2'
+# adding file upload
+gem 'carrierwave', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -41,14 +45,12 @@ gem "cpf_cnpj"
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-rails'
+  gem 'pry-rails', '~> 0.3.9'
   #tests gems
-  gem 'rspec-rails'
-  gem 'ffaker'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'ffaker', '~> 2.18.0'
+  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'shoulda-matchers', '~> 5.0.0'
 end
 
 group :development do

@@ -1,7 +1,8 @@
 class CitizensController < ApplicationController
   before_action :set_states, only: [:new, :edit]
+  
   def index
-    @citizens = Citizen.all.order(:id)
+    @citizens = Citizen.order(:id).decorate
   end
 
   def new
@@ -11,6 +12,7 @@ class CitizensController < ApplicationController
 
   def create
     @citizen = Citizen.new(permitted_params)
+
     respond_to do |format|
       if @citizen.save
         format.html { redirect_to root_path, notice: "Incluido com sucesso." }
@@ -21,20 +23,20 @@ class CitizensController < ApplicationController
   end
 
   def edit
-    @citizen = Citizen.find_by_id(params[:id])
+    @citizen = Citizen.find_by(id: params[:id])
   end
   
   def update
     @citizen = Citizen.find(params[:id])
-    if @citizen.update_attributes(permitted_params)
-      flash[:success] = "Object was successfully updated"
-      redirect_to citizens_path
-    else
-      flash[:error] = "Something went wrong"
-      render :edit
+
+    respond_to do |format|
+      if @citizen.update(permitted_params)
+        format.html { redirect_to root_path, notice: 'Atualizado com sucesso.' }
+      else
+        format.html { render :new, error: 'Erro ao atualizar.', status: :unprocessable_entity }
+      end
     end
   end
-  
   
   private
 

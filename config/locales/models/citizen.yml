@@ -7,7 +7,7 @@ pt-BR:
     attributes:
       citizen:
         name: 'Nome completo'
-        cpf: 'CPF somente numeros'
+        cpf: 'CPF'
         cns: 'Código nacional de saude'
         birth_date: 'Data de nascimento'
         phonenumber: 'Telefone'

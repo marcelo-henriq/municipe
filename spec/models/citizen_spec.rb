@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Citizen, type: :model do
   context 'model validates' do
-    let(:citizen) { create(:citizen, birth_date: 15.year.ago.to_date) }
+    let(:citizen) { build(:citizen, birth_date: 15.year.ago.to_date) }
     before do
-      citizen.address = create(:address, citizen_id: citizen.id)
+      citizen.address = build(:address, citizen_id: citizen.id)
     end
 
     it 'validate attrs presence' do
-      expect(citizen).to be_valid
+      expect(citizen).to be_valid # n
     end
 
     it 'validate birth date had included in range' do
