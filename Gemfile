@@ -51,6 +51,7 @@ group :development, :test do
   gem 'ffaker', '~> 2.18.0'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'shoulda-matchers', '~> 5.0.0'
+  gem 'rails-controller-testing', '~> 0.0.3'
 end
 
 group :development do

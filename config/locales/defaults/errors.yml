@@ -4,7 +4,32 @@ pt-BR:
       models:
         citizen:
           attributes:
+            name:
+              blank: 'Não pode ficar em branco'
+            cpf:
+              blank: 'Não pode ficar em branco'
+            cns:
+              blank: 'Não pode ficar em branco'
             phonenumber:
               wrong_length: 'Muito pequeno'
+              blank: 'Não pode ficar em branco'
             birth_date:
+              blank: 'Não pode ficar em branco'
+            photo:
+              blank: 'Não pode ficar em branco'
+        address:
+          attributes:
+            zipcode:
+              blank: 'Não pode ficar em branco'
+            residencial_number:
+              blank: 'Não pode ficar em branco'
+            ibge_code:
+              blank: 'Não pode ficar em branco'
+            address:
+              blank: 'Não pode ficar em branco'
+            complement:
+              blank: 'Não pode ficar em branco'
+            neighborhood:
+              blank: 'Não pode ficar em branco'
+            city:
               blank: 'Não pode ficar em branco'

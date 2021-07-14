@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
 
-  resources :citizens, except: :destroy
+  resources :citizens, only: [:index, :new, :edit, :update]
 end

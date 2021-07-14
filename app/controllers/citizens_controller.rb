@@ -11,6 +11,7 @@ class CitizensController < ApplicationController
   end
 
   def create
+
     @citizen = Citizen.new(permitted_params)
 
     respond_to do |format|
@@ -25,26 +26,30 @@ class CitizensController < ApplicationController
   def edit
     @citizen = Citizen.find_by(id: params[:id])
   end
-  
+
   def update
     @citizen = Citizen.find(params[:id])
+  # rescue ActiveRecord::RecordNotFound => e
+  #   respond_to do |format|
+  #     format.html { redirect_to citizens_path, notice: e }
+  #   end
 
     respond_to do |format|
       if @citizen.update(permitted_params)
-        format.html { redirect_to root_path, notice: 'Atualizado com sucesso.' }
+        format.html { redirect_to citizens_path, notice: 'Atualizado com sucesso.' }
       else
-        format.html { render :new, error: 'Erro ao atualizar.', status: :unprocessable_entity }
+        format.html { render :edit, error: 'Erro ao atualizar.', status: :unprocessable_entity }
       end
     end
   end
-  
+
   private
 
   def permitted_params
     params.require(:citizen)
     .permit(:id, :name, :cpf, :cns, :photo, :birth_date, :phonenumber, :status, address_attributes: [
-      :id, :zipcode, :ibge_code, :address, :street, :complement, :neighborhood, :city, :state, :_destroy
-    ] )
+      :id, :zipcode, :ibge_code, :address, :residencial_number, :street, :complement, :neighborhood, :city, :state, :_destroy
+    ])
   end
 
   def set_states

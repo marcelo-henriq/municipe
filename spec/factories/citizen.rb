@@ -5,7 +5,7 @@ FactoryBot.define do
     cns  { [*1..99999].sample }
     birth_date { FFaker::Time.date }
     phonenumber { FFaker::PhoneNumberBR.international_mobile_phone_number.delete('^0-9') }
-    photo { FFaker::Lorem.word }
+    photo { Rack::Test::UploadedFile.new(File.join("#{Rails.root}/app/assets/images/logo.png")) }
     status { %w[A B].sample }
     address
   end
