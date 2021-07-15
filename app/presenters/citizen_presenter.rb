@@ -1,4 +1,4 @@
-class CitizenPresenter < SimpleDelegator
+class CitizenPresenter
   def initialize(citizens:, query:)
     @citizens = citizens
     @query = query
