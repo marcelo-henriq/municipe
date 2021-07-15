@@ -1,0 +1,7 @@
+pt-BR:
+  notices:
+    created: 'Incluido com sucesso!'
+    updated: 'Atualizado com sucesso!'
+  alerts:
+    created: 'Erro ao incluir!'
+    updated: 'Erro atualizar!'

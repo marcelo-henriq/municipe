@@ -2,7 +2,7 @@ class CitizenDecorator < ApplicationDecorator
   delegate_all
 
   def pretty_phonenumber
-    "+#{object.phonenumber[0..1]} (#{object.phonenumber[2..3]})#{object.phonenumber[4..8]}-#{object.phonenumber[9..12]}"
+    "+#{object.country_code} (#{object.phonenumber[0..1]})#{object.phonenumber[2..6]}-#{object.phonenumber[7..10]}"
   end
 
   def pretty_cpf

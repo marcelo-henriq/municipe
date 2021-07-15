@@ -7,9 +7,11 @@ pt-BR:
     attributes:
       citizen:
         name: 'Nome completo'
+        email: 'E-mail'
         cpf: 'CPF'
         cns: 'Código nacional de saude'
         birth_date: 'Data de nascimento'
+        country_code: 'DDI'
         phonenumber: 'Telefone'
         photo: 'Foto'
         status: 'Status'

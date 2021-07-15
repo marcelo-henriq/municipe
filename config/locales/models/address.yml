@@ -9,6 +9,7 @@ pt-BR:
         zipcode: 'CEP/Código postal'
         ibge_code: 'Código IBGE'
         address: 'Logradouro'
+        residencial_number: 'Número'
         complement: 'Complemento(Apt, Numero, Bloco)'
         neighborhood: 'Bairro'
         city: 'Cidade'

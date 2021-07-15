@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .rounded {
+        border: 1px, solid;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Welcome to plataform Sr. <%= @citizen.name %>!</p>
+    <p>
+    Citizen details<br>
+    --------------------------
+    </p>
+    <p> <%= image_tag @citizen.photo.thumb.url, 
+              class: 'rounded' %> | Name: <%= @citizen.name %></p>
+    <p>Email: <%= @citizen.email %></p>
+    <p>Address: <%= @citizen.address.city %> | <%= @citizen.address.address %> </p>
+    <p>Phone: <%= @citizen.phonenumber %></p>
+    <p>
+    Att:<br>
+    ----------
+    </p>
+    <p>OM30</p>
+  </body>
+</html>

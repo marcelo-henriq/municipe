@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-      <% if @citizens.each do |citizen| %>
+      <% if @citizens.filtered_citizens.decorate.each do |citizen| %>
         <tr>
           <td class="text-center"> <%= citizen.id %> </td>
           <td> <%= citizen.name %> </td>

@@ -1,8 +1,9 @@
 class CitizensController < ApplicationController
-  before_action :set_states, only: [:new, :edit]
+  before_action :find_citizen, only: [:edit, :update]
   
   def index
-    @citizens = Citizen.order(:id).decorate
+    #@citizens = Citizen.order(:id).decorate
+    @citizens = CitizenPresenter.new(citizens: Citizen.order(:id), query: params[:q] )
   end
 
   def new
@@ -11,34 +12,28 @@ class CitizensController < ApplicationController
   end
 
   def create
-
     @citizen = Citizen.new(permitted_params)
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to root_path, notice: "Incluido com sucesso." }
+        CitizenMailer.notify_new_citizen(@citizen).deliver_now!
+        format.html { redirect_to root_path, notice: t('notices.created') }
       else
-        format.html { render :new, error: "Erro ao incluir", status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
   def edit
-    @citizen = Citizen.find_by(id: params[:id])
   end
 
   def update
-    @citizen = Citizen.find(params[:id])
-  # rescue ActiveRecord::RecordNotFound => e
-  #   respond_to do |format|
-  #     format.html { redirect_to citizens_path, notice: e }
-  #   end
-
     respond_to do |format|
       if @citizen.update(permitted_params)
-        format.html { redirect_to citizens_path, notice: 'Atualizado com sucesso.' }
+        CitizenMailer.notify_update_citizen(@citizen).deliver_now!
+        format.html { redirect_to citizens_path, notice: t('notices.updated') }
       else
-        format.html { render :edit, error: 'Erro ao atualizar.', status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -47,40 +42,14 @@ class CitizensController < ApplicationController
 
   def permitted_params
     params.require(:citizen)
-    .permit(:id, :name, :cpf, :cns, :photo, :birth_date, :phonenumber, :status, address_attributes: [
+    .permit(:id, :name, :email, :cpf, :cns, :photo, :birth_date, :country_code, :phonenumber, :status, address_attributes: [
       :id, :zipcode, :ibge_code, :address, :residencial_number, :street, :complement, :neighborhood, :city, :state, :_destroy
     ])
   end
 
-  def set_states
-    @states = [
-      ['AC', 'Acre'],
-      ['AL', 'Alagoas'],
-      ['AM', 'Amazonas'],
-      ['AP', 'Amapá'],
-      ['BA', 'Bahia'],
-      ['CE', 'Ceará'],
-      ['DF', 'Distrito Federal'],
-      ['ES', 'Espírito Santo'],
-      ['GO', 'Goiás'],
-      ['MA', 'Maranhão'],
-      ['MG', 'Minas Gerais'],
-      ['MS', 'Mato Grosso do Sul'],
-      ['MT', 'Mato Grosso'],
-      ['PA', 'Pará'],
-      ['PB', 'Paraíba'],
-      ['PE', 'Pernambuco'],
-      ['PI', 'Piauí'],
-      ['PR', 'Paraná'],
-      ['RJ', 'Rio de Janeiro'],
-      ['RN', 'Rio Grande do Norte'],
-      ['RO', 'Rondônia'],
-      ['RR', 'Roraima'],
-      ['RS', 'Rio Grande do Sul'],
-      ['SC', 'Santa Catarina'],
-      ['SE', 'Sergipe'],
-      ['SP', 'São Paulo'],
-      ['TO', 'Tocantins']
-    ]
+  def find_citizen
+    @citizen = Citizen.find(params[:id])
+    redirect_to citizens_path unless @citizen.present?
   end
+
 end

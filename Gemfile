@@ -30,6 +30,8 @@ gem 'cpf_cnpj', '~> 0.5.0'
 gem 'draper', '~> 4.0.2'
 # adding file upload
 gem 'carrierwave', '~> 2.0'
+# adding search features
+gem 'ransack', '~> 2.4.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

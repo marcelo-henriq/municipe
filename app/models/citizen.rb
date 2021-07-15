@@ -4,9 +4,10 @@ class Citizen < ApplicationRecord
 
   accepts_nested_attributes_for :address, allow_destroy: true
 
-  validates :name, :cpf, :cns, :photo, :birth_date, :phonenumber, :status, presence: true
+  validates :name, :email, :cpf, :cns, :photo, :birth_date, :country_code, :phonenumber, :status, presence: true
   validates :cpf, length: { is: 11 }
-  validates :phonenumber, length: { is: 13 }
+  validates :email, format: URI::MailTo::EMAIL_REGEXP
+  validates :phonenumber, length: { is: 11 }
   validates :birth_date, inclusion: { in: 30.year.ago..1.day.ago, message: 'date must be included in range' }
   #custom validates
   validate :valid_cpf
