@@ -14,4 +14,8 @@ class CitizenDecorator < ApplicationDecorator
 
     l(object.birth_date)
   end
+
+  def statuses
+    CitizenStatus.to_a
+  end
 end

@@ -4,11 +4,11 @@
     <div class="text-muted text-center mb-3">
       <%= @citizen.model_name.human %>
     </div>
-    <%= simple_form_for @citizen, url: url_path do |f| %>
+    <%= simple_form_for @citizen, url: url_path, html: { class: 'citizen-form' } do |f| %>
       <div class="row">
         <%= f.input :name, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :email, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group  col-md-6' } %>
-        <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative cpf-masked' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :cns, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <% if @citizen.photo.present? %>
           <div class="row col-md-12 align-items-center justify-content-space-between">
@@ -30,8 +30,8 @@
         <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :deafult, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
         <%= f.input :country_code, as: :select, collection: country_codes_list, label_method: :third, value_method: :first,
           selected: @citizen.country_code, input_html: { class: 'form-control form-control-alternative country_code' }, wrapper_html: { class: 'form-group col-md-2' } %>
-        <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
-        <%= f.input :status, as: :select, collection: [['A', 'Ativo'], ['I', 'Inativo']], label_method: :second, value_method: :first,
+        <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative phonenumber-masked' }, wrapper_html: { class: 'form-group col-md-4' } %>
+        <%= f.input :status, as: :select, collection: @citizen.decorate.statuses, label_method: :first, value_method: :second,
           selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         
         <div class="text-muted text-center my-3 col-md-12">
