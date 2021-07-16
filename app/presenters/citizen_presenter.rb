@@ -5,7 +5,7 @@ class CitizenPresenter
   end
 
   def filtered_citizens
-    @filtered_citizens = search.result
+    @filtered_citizens = search.result.decorate
   end
 
   def search

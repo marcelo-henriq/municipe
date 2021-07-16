@@ -8,4 +8,10 @@ class CitizenDecorator < ApplicationDecorator
   def pretty_cpf
     CPF.new(object.cpf).formatted
   end
+
+  def birth_date_localized
+    return t('common.empty') unless object.birth_date.present?
+
+    l(object.birth_date)
+  end
 end

@@ -12,23 +12,24 @@
         <%= f.input :cns, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <% if @citizen.photo.present? %>
           <div class="row col-md-12 align-items-center justify-content-space-between">
-          <%= link_to @citizen.photo.thumb.url, target: :_blank do %>
-            <span>Small size</span>
-            <%= image_tag @citizen.photo.thumb.url, class: 'img-fluid rounded mr-3', style: 'width: 25px;' %>
-          <% end %>
-          <%= link_to @citizen.photo.normal.url, target: :_blank do %>
-            <span>Normal size</span>
-            <%= image_tag @citizen.photo.normal.url, class: 'img-fluid rounded mr-3', style: 'width: 50px;' %>
-          <% end %>
-          <%= link_to @citizen.photo.large.url, target: :_blank do %>
-            <span>Large size</span>
-            <%= image_tag @citizen.photo.large.url, class: 'img-fluid rounded mr-3', style: 'width: 100px;' %>
-          <% end %>
+            <%= link_to @citizen.photo.thumb.url, target: :_blank do %>
+              <span>Small size</span>
+              <%= image_tag @citizen.photo.thumb.url, class: 'img-fluid rounded mr-3', style: 'width: 25px;' %>
+            <% end %>
+            <%= link_to @citizen.photo.normal.url, target: :_blank do %>
+              <span>Normal size</span>
+              <%= image_tag @citizen.photo.normal.url, class: 'img-fluid rounded mr-3', style: 'width: 50px;' %>
+            <% end %>
+            <%= link_to @citizen.photo.large.url, target: :_blank do %>
+              <span>Large size</span>
+              <%= image_tag @citizen.photo.large.url, class: 'img-fluid rounded mr-3', style: 'width: 100px;' %>
+            <% end %>
           </div>
         <% end %>
         <%= f.input :photo, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :deafult, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
-        <%= f.input :country_code, as: :select, collection: country_codes_list, label_method: :second, value_method: :first, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-2' } %>
+        <%= f.input :country_code, as: :select, collection: country_codes_list, label_method: :third, value_method: :first,
+          selected: @citizen.country_code, input_html: { class: 'form-control form-control-alternative country_code' }, wrapper_html: { class: 'form-group col-md-2' } %>
         <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
         <%= f.input :status, as: :select, collection: [['A', 'Ativo'], ['I', 'Inativo']], label_method: :second, value_method: :first,
           selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
@@ -40,13 +41,14 @@
         <%= f.fields_for :address do |ff| %>
           <%= ff.input :zipcode, input_html: { class: 'form-control form-control-alternative zipcode' }, wrapper_html: { class: 'form-group col-md-4' } %>
           <%= ff.input :residencial_number, input_html: { class: 'form-control form-control-alternative address' }, wrapper_html: { class: 'form-group col-md-4' } %>
-          <%= ff.input :ibge_code, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :ibge_code, input_html: { class: 'form-control form-control-alternative ibge_code' }, wrapper_html: { class: 'form-group col-md-4' } %>
           <%= ff.input :address, input_html: { class: 'form-control form-control-alternative address_street' }, wrapper_html: { class: 'form-group col-md-6' } %>
           <%= ff.input :complement, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
           <%= ff.input :neighborhood, input_html: { class: 'form-control form-control-alternative district' }, wrapper_html: { class: 'form-group col-md-4' } %>
-          <%= ff.input :city, input_html: { class: 'form-control form-control-alternative city' }, wrapper_html: { class: 'form-group col-md-4' } %>
           <%= ff.input :state, as: :select, collection: state_list, label_method: :second, value_method: :first,
           selected: @citizen.address.state || nil, input_html: { class: 'form-control form-control-alternative states_select' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :city, as: :select, collection: [['', 'Selecione um estado']], label_method: :second, value_method: :first,
+          selected: @citizen.address.city || nil, input_html: { class: 'form-control form-control-alternative city_select' }, wrapper_html: { class: 'form-group col-md-4' } %>
         <% end %>
       </div>
       <div class="row col-md-12 col-sm-12 col-lg-12 text-right">

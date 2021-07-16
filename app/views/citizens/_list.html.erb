@@ -1,35 +1,35 @@
 <table class="table">
-    <thead>
-        <tr>
-            <th class="text-center">#</th>
-            <th width="300"> <%= Citizen.human_attribute_name :name %> </th>
-            <th><%= Citizen.human_attribute_name :cpf %></th>
-            <th width="150"><%= Citizen.human_attribute_name :cns %></th>
-            <th><%= Citizen.human_attribute_name :birth_date %></th>
-            <th><%= Citizen.human_attribute_name :phonenumber %></th>
-            <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
-            <th class="text-right"><%= Citizen.human_attribute_name :status %></th>
-            <th class="text-right">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% if @citizens.filtered_citizens.decorate.each do |citizen| %>
-        <tr>
-          <td class="text-center"> <%= citizen.id %> </td>
-          <td> <%= citizen.name %> </td>
-          <td> <%= citizen.pretty_cpf %> </td>
-          <td> <%= citizen.cns %> </td>
-          <td class="text-right"> <%= citizen.birth_date.strftime('%d/%m/%Y') if citizen.birth_date.present? %> </td>
-          <td> <%= citizen.pretty_phonenumber %> </td>
-          <td> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
-          <td class="text-center"> <%= citizen.status %> </td>
-          <td class="td-actions text-right">
-            <%= render 'layouts/common/actions/edit',
-              link: edit_citizen_path(citizen.id) %>
-          </td>
-        </tr>
-      <% end.empty? %>
-        <tr> <span><%= t('common.empty') %></span> </tr>
-      <% end %>
-    </tbody>
+  <thead>
+      <tr>
+          <th class="text-center">#</th>
+          <th width="300"> <%= Citizen.human_attribute_name :name %> </th>
+          <th><%= Citizen.human_attribute_name :cpf %></th>
+          <th width="150"><%= Citizen.human_attribute_name :cns %></th>
+          <th><%= Citizen.human_attribute_name :birth_date %></th>
+          <th><%= Citizen.human_attribute_name :phonenumber %></th>
+          <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
+          <th class="text-right"><%= Citizen.human_attribute_name :status %></th>
+          <th class="text-right">Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% if @citizens.filtered_citizens.each do |citizen| %>
+      <tr>
+        <td class="text-center"> <%= citizen.id %> </td>
+        <td> <%= citizen.name %> </td>
+        <td> <%= citizen.pretty_cpf %> </td>
+        <td> <%= citizen.cns %> </td>
+        <td class="text-right"> <%= citizen.birth_date_localized %> </td>
+        <td> <%= citizen.pretty_phonenumber %> </td>
+        <td> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
+        <td class="text-center"> <%= citizen.status %> </td>
+        <td class="td-actions text-right">
+          <%= render 'layouts/common/actions/edit',
+            link: edit_citizen_path(citizen.id) %>
+        </td>
+      </tr>
+    <% end.empty? %>
+      <tr> <span><%= t('common.empty') %></span> </tr>
+    <% end %>
+  </tbody>
 </table>
