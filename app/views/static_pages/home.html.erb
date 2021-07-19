@@ -1,4 +1,3 @@
-
 <section class="section features-1">
 <div class="container">
   <h1> <%= t('common.hello') %> </h1>
@@ -8,10 +7,10 @@
         <div class="icon icon-lg icon-shape icon-shape-success shadow rounded-circle">
           <i class="ni ni-circle-08"></i>
         </div>
-        <h6 class="info-title text-uppercase text-success">Gerenciar </h6>
-        <p class="description opacity-8">Aqui voce pode incluir, alterar e consultar detalhes dos cidadãos presentes no sistema. Entre com seu usuário para acessar!</p>
+        <h6 class="info-title text-uppercase text-success"> <%= t('common.page_title', model: Citizen.model_name.human(count: 2) ) %> </h6>
+        <p class="description opacity-8"> <%= t('common.citizen_page.description') %> </p>
         <%= link_to citizens_path, class: 'text-primary' do %>
-          Ir para a pagina
+          <%= t('common.buttons.go_page') %>
           <i class="ni ni-bold-right text-primary"></i>
         <% end %>
       </div>

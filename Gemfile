@@ -32,6 +32,8 @@ gem 'draper', '~> 4.0.2'
 gem 'carrierwave', '~> 2.0'
 # adding search features
 gem 'ransack', '~> 2.4.2'
+# using enums
+gem 'enumerate_it', '~> 3.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

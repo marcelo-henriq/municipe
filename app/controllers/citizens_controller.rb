@@ -2,8 +2,7 @@ class CitizensController < ApplicationController
   before_action :find_citizen, only: [:edit, :update]
   
   def index
-    #@citizens = Citizen.order(:id).decorate
-    @citizens = CitizenPresenter.new(citizens: Citizen.order(:id), query: params[:q] )
+    @citizens = CitizenPresenter.new(citizens: Citizen.order(:id), query: params[:q])
   end
 
   def new

@@ -27,10 +27,15 @@
           </div>
         <% end %>
         <%= f.input :photo, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
-        <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :deafult, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
-        <%= f.input :country_code, as: :select, collection: country_codes_list, label_method: :third, value_method: :first,
-          selected: @citizen.country_code, input_html: { class: 'form-control form-control-alternative country_code' }, wrapper_html: { class: 'form-group col-md-2' } %>
-        <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative phonenumber-masked' }, wrapper_html: { class: 'form-group col-md-4' } %>
+        <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :default, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
+        <div class="form-group col-md-1 mt-1">
+          <span>DDI</span>
+          <%= button_tag 'DDI', type: 'button', class: 'btn btn-icon btn-l btn-secondary', 'data-container'=> 'body', 
+              'data-original-title' => 'Código nacional', 'data-toggle' => 'popover', 'data-placement' => 'top', 'data-content' => 'Brasil +55' do %>
+              <%= image_tag 'BR', width: '25' %>
+            <% end %>
+        </div>
+        <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative phonenumber-masked' }, wrapper_html: { class: 'form-group col-md-5' } %>
         <%= f.input :status, as: :select, collection: @citizen.decorate.statuses, label_method: :first, value_method: :second,
           selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
         
@@ -52,8 +57,7 @@
         <% end %>
       </div>
       <div class="row col-md-12 col-sm-12 col-lg-12 text-right">
-          <%= render 'layouts/common/actions/back',
-              link: citizens_path %>
+          <%= render 'layouts/common/actions/back', link: citizens_path %>
           <%= render 'layouts/common/actions/submit' %>
       </div>
     <% end %>

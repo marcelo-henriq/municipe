@@ -15,3 +15,6 @@ pt-BR:
         phonenumber: 'Telefone'
         photo: 'Foto'
         status: 'Status'
+        statuses:
+          active: 'Ativo'
+          inactive: 'Inativo'

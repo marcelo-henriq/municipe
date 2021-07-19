@@ -9,7 +9,7 @@
           <th><%= Citizen.human_attribute_name :phonenumber %></th>
           <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
           <th class="text-right"><%= Citizen.human_attribute_name :status %></th>
-          <th class="text-right">Actions</th>
+          <th class="text-right"> <%= t('common.links.actions.title') %> </th>
       </tr>
   </thead>
   <tbody>
@@ -22,7 +22,7 @@
         <td class="text-right"> <%= citizen.birth_date_localized %> </td>
         <td> <%= citizen.pretty_phonenumber %> </td>
         <td> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
-        <td class="text-center"> <%= citizen.status %> </td>
+        <td class="text-center"> <%= CitizenStatus.t citizen.status %> </td>
         <td class="td-actions text-right">
           <%= render 'layouts/common/actions/edit',
             link: edit_citizen_path(citizen.id) %>

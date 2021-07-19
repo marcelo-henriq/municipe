@@ -94,6 +94,8 @@ GEM
       activesupport (>= 5.0)
       request_store (>= 1.0)
       ruby2_keywords
+    enumerate_it (3.2.0)
+      activesupport (>= 5.0.7.2)
     erubi (1.10.0)
     execjs (2.8.1)
     factory_bot (6.2.0)
@@ -269,6 +271,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   cpf_cnpj (~> 0.5.0)
   draper (~> 4.0.2)
+  enumerate_it (~> 3.2)
   factory_bot_rails (~> 6.2.0)
   ffaker (~> 2.18.0)
   jbuilder (~> 2.5)

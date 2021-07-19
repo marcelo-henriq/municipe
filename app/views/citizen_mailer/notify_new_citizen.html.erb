@@ -3,8 +3,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     <style>
       .rounded {
+        width: 50px;
+        height: auto;
         border: 1px, solid;
-        border-radius: 50%;
+        border-radius: 10%;
       }
     </style>
   </head>
@@ -14,8 +16,9 @@
     Citizen details<br>
     --------------------------
     </p>
-    <p> <%= image_tag @citizen.photo.thumb.url, 
-              class: 'rounded' %> | Name: <%= @citizen.name %></p>
+    <h3> 
+    <%= email_image_tag "public#{@citizen.photo.thumb.url}", class: 'rounded' %>
+      | Name: <%= @citizen.name %></h3>
     <p>Email: <%= @citizen.email %></p>
     <p>Address: <%= @citizen.address.city %> | <%= @citizen.address.address %> </p>
     <p>Phone: <%= @citizen.phonenumber %></p>
@@ -23,6 +26,6 @@
     Att:<br>
     ----------
     </p>
-    <p>OM30</p>
+    <p> <%= email_image_tag "app/assets/images/logo.png", class: 'rounded' %> </p>
   </body>
 </html>
