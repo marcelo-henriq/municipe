@@ -15,6 +15,10 @@ class CitizenDecorator < ApplicationDecorator
     l(object.birth_date)
   end
 
+  def pretty_address
+    "#{object.address.neighborhood}, #{object.address.residencial_number} | #{object.address.city}."
+  end
+
   def statuses
     CitizenStatus.to_a
   end

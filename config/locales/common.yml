@@ -7,7 +7,12 @@ pt-BR:
     edit_entity: 'Editar %{model}'
     citizen_page:
       description: 'Aqui voce pode incluir, alterar e consultar detalhes dos cidadãos presentes no sistema. Entre com seu usuário para acessar!'
-    buttons:
+    images:
+      sizes:
+        small: 'Tamanho pequeno'
+        regular: 'Tamanho médio'
+        large: 'Tamanho grande'
+      buttons:
       go_page: 'Ir para a pagina'
       add_button: 'Adicionar'
       filter: 'Pesquisar'

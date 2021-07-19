@@ -4,7 +4,7 @@
           <th class="text-center">#</th>
           <th width="300"> <%= Citizen.human_attribute_name :name %> </th>
           <th><%= Citizen.human_attribute_name :cpf %></th>
-          <th width="150"><%= Citizen.human_attribute_name :cns %></th>
+          <th width="150"><%= Address.human_attribute_name :address %></th>
           <th><%= Citizen.human_attribute_name :birth_date %></th>
           <th><%= Citizen.human_attribute_name :phonenumber %></th>
           <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
@@ -18,7 +18,7 @@
         <td class="text-center"> <%= citizen.id %> </td>
         <td> <%= citizen.name %> </td>
         <td> <%= citizen.pretty_cpf %> </td>
-        <td> <%= citizen.cns %> </td>
+        <td> <%= citizen.pretty_address %> </td>
         <td class="text-right"> <%= citizen.birth_date_localized %> </td>
         <td> <%= citizen.pretty_phonenumber %> </td>
         <td> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
