@@ -21,7 +21,7 @@
         <td> <%= citizen.pretty_address %> </td>
         <td class="text-right"> <%= citizen.birth_date_localized %> </td>
         <td> <%= citizen.pretty_phonenumber %> </td>
-        <td> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
+        <td class="text-center"> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
         <td class="text-center"> <%= CitizenStatus.t citizen.status %> </td>
         <td class="td-actions text-right">
           <%= render 'layouts/common/actions/edit',

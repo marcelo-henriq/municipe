@@ -10,13 +10,17 @@ pt-BR:
               blank: 'Não pode ficar em branco'
             cpf:
               blank: 'Não pode ficar em branco'
+              invalid: 'CPF precisa ser válido'
             cns:
               blank: 'Não pode ficar em branco'
+              invalid: 'CNS precisa ser válido'
+              wrong_length: 'Muito pequeno'
             phonenumber:
               wrong_length: 'Muito pequeno'
               blank: 'Não pode ficar em branco'
             birth_date:
               blank: 'Não pode ficar em branco'
+              out_of_range: 'A data precisa ser válida'
             photo:
               blank: 'Não pode ficar em branco'
         address:

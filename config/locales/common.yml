@@ -12,7 +12,7 @@ pt-BR:
         small: 'Tamanho pequeno'
         regular: 'Tamanho médio'
         large: 'Tamanho grande'
-      buttons:
+    buttons:
       go_page: 'Ir para a pagina'
       add_button: 'Adicionar'
       filter: 'Pesquisar'

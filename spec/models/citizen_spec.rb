@@ -21,7 +21,7 @@ RSpec.describe Citizen, type: :model do
       citizen.cpf = '11111111111'
 
       citizen.valid?
-      expect(citizen.errors[:cpf]).to contain_exactly 'cpf must be valid'
+      expect(citizen.errors[:cpf]).to contain_exactly 'CPF precisa ser válido'
     end
 
     describe 'validate nested attrs' do

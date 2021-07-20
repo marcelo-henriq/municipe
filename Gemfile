@@ -52,6 +52,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
   #tests gems
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'simplecov', '~> 0.21.2'
   gem 'ffaker', '~> 2.18.0'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'shoulda-matchers', '~> 5.0.0'

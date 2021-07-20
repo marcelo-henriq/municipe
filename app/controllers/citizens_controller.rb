@@ -12,11 +12,10 @@ class CitizensController < ApplicationController
 
   def create
     @citizen = Citizen.new(permitted_params)
-
     respond_to do |format|
       if @citizen.save
         CitizenMailer.notify_new_citizen(@citizen).deliver_now!
-        format.html { redirect_to root_path, notice: t('notices.created') }
+        format.html { redirect_to citizens_path, notice: t('notices.created') }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
