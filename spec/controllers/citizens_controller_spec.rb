@@ -79,15 +79,27 @@ RSpec.describe CitizensController do
   end
 
   describe 'PUT/PACTH #update' do
-    let(:citizen){create(:citizen)}
-    let(:citizen_params) { attributes_for(:citizen, name: 'Marcelo Henrique', birth_date: '1999-10-27'.to_date ) }
+    let(:citizen) {create(:citizen)}
 
-    it 'validate update object' do
-      put :update, params: { id: citizen.id, citizen: citizen_params }
+    context 'when citizen have valid params' do
+      let(:citizen_params) { attributes_for(:citizen, name: 'Marcelo Henrique', birth_date: '1999-10-27'.to_date ) }
+      it 'validate update object' do
+        put :update, params: { id: citizen.id, citizen: citizen_params }
 
-      expect(response).to have_http_status(302)
-      expect(response).to redirect_to citizens_path
-      expect(flash[:notice]).to be_present
+        expect(citizen.reload.name).to eq 'Marcelo Henrique'
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to citizens_path
+        expect(flash[:notice]).to be_present
+      end
+    end
+
+    context 'when citizen do not have valid params' do
+      let(:citizen_params) { attributes_for(:citizen, name: '', cpf: '' ) }
+      it 'validate update object' do
+        put :update, params: { id: citizen.id, citizen: citizen_params }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 end
