@@ -9,7 +9,7 @@ pt-BR:
         name: 'Nome completo'
         email: 'E-mail'
         cpf: 'CPF'
-        cns: 'Código nacional de saude'
+        cns: 'Cartão nacional de saúde'
         birth_date: 'Data de nascimento'
         country_code: 'DDI'
         phonenumber: 'Telefone'

@@ -15,7 +15,7 @@ RSpec.describe CitizensController do
     end
 
     it 'validate citizens list' do
-      expect(assigns(:citizens).filtered_citizens).to match_array(citizens)
+      expect(assigns(:citizens).filtered_citizens).to eq citizens
     end
   end
 
@@ -39,7 +39,7 @@ RSpec.describe CitizensController do
     let(:citizen_params) { attributes_for(:citizen, birth_date: '2001-06-06'.to_date) }
     let(:address_params) { attributes_for(:address) }
 
-    context 'When citizen have valid params' do
+    context 'When citizen have valid params', aggregate_failures: true do
       it 'validate create object' do
         expect{
           post :create, params: { citizen: citizen_params.merge!(address_attributes: address_params) }
@@ -51,7 +51,7 @@ RSpec.describe CitizensController do
 
         expect(response).to have_http_status(302)
         expect(response).to redirect_to citizens_path
-        expect(flash[:notice]).to be_present
+        expect(flash[:notice]).to eq 'Incluido com sucesso!'
       end
     end
 
@@ -76,12 +76,16 @@ RSpec.describe CitizensController do
     it 'validate render template' do
       expect(response).to render_template(:edit)
     end
+
+    it 'validate object' do
+      expect(assigns(:citizen)).to eql citizen
+    end
   end
 
   describe 'PUT/PACTH #update' do
     let(:citizen) {create(:citizen)}
-
-    context 'when citizen have valid params' do
+    
+    context 'when citizen have valid params', aggregate_failures: true do
       let(:citizen_params) { attributes_for(:citizen, name: 'Marcelo Henrique', birth_date: '1999-10-27'.to_date ) }
       it 'validate update object' do
         put :update, params: { id: citizen.id, citizen: citizen_params }
@@ -89,7 +93,7 @@ RSpec.describe CitizensController do
         expect(citizen.reload.name).to eq 'Marcelo Henrique'
         expect(response).to have_http_status(302)
         expect(response).to redirect_to citizens_path
-        expect(flash[:notice]).to be_present
+        expect(flash[:notice]).to eq 'Atualizado com sucesso!'
       end
     end
 

@@ -34,6 +34,8 @@ gem 'carrierwave', '~> 2.0'
 gem 'ransack', '~> 2.4.2'
 # using enums
 gem 'enumerate_it', '~> 3.2'
+# jobs async with sidekiq
+# gem 'sidekiq', '~> 6.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
