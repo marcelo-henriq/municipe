@@ -1,0 +1,8 @@
+<%= button_tag type: :submit,
+               name: 'commit',
+               class: 'btn btn-info btn-icon',
+               data: { disable_with: "Salvando..." } do %>
+  <span class="btn-inner--icon">
+            <i class="fa fa-save mr-2"></i>
+          </span>  <%= text = t('buttons.submit.text') %>
+<% end %>

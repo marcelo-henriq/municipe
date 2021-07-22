@@ -1,0 +1,41 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        citizen:
+          attributes:
+            name:
+              blank: 'Não pode ficar em branco'
+            email:
+              blank: 'Não pode ficar em branco'
+            cpf:
+              blank: 'Não pode ficar em branco'
+              invalid: 'CPF precisa ser válido'
+            cns:
+              blank: 'Não pode ficar em branco'
+              invalid: 'CNS precisa ser válido'
+              wrong_length: 'Muito pequeno'
+            phonenumber:
+              wrong_length: 'Muito pequeno'
+              blank: 'Não pode ficar em branco'
+            birth_date:
+              blank: 'Não pode ficar em branco'
+              out_of_range: 'A data precisa ser válida'
+            photo:
+              blank: 'Não pode ficar em branco'
+        address:
+          attributes:
+            zipcode:
+              blank: 'Não pode ficar em branco'
+            residencial_number:
+              blank: 'Não pode ficar em branco'
+            ibge_code:
+              blank: 'Não pode ficar em branco'
+            address:
+              blank: 'Não pode ficar em branco'
+            complement:
+              blank: 'Não pode ficar em branco'
+            neighborhood:
+              blank: 'Não pode ficar em branco'
+            city:
+              blank: 'Não pode ficar em branco'

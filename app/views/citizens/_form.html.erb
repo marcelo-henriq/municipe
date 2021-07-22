@@ -1,0 +1,52 @@
+<div class="card bg-secondary shadow border-0">
+
+  <div class="card-body px-4">
+    <div class="text-muted text-center mb-3">
+      <%= image_tag @citizen.photo.normal.url, class: 'img-fluid rounded-circle shadow mr-3', 
+      style: 'width: 60px;' if @citizen.photo.present? %> 
+      <%= @citizen.model_name.human %>
+    </div>
+    <%= simple_form_for @citizen, url: url_path, html: { class: 'citizen-form' } do |f| %>
+      <div class="row">
+        <%= f.input :name, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :email, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group  col-md-6' } %>
+        <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative cpf-masked' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :cns, input_html: { class: 'form-control form-control-alternative cns-masked' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :photo, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :birth_date, as: :string, input_html: { type: 'date', format: :default, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' }, format: :default %>
+        <div class="form-group col-md-1 mt-1">
+          <span>DDI</span>
+          <%= button_tag 'DDI', type: 'button', class: 'btn btn-icon btn-l btn-secondary', 'data-container'=> 'body', 
+              'data-original-title' => 'Código nacional', 'data-toggle' => 'popover', 'data-placement' => 'top', 'data-content' => 'Brasil +55' do %>
+              <%= image_tag 'BR', width: '25' %>
+            <% end %>
+        </div>
+        <%= f.input :phonenumber, input_html: { class: 'form-control form-control-alternative phonenumber-masked' }, wrapper_html: { class: 'form-group col-md-5' } %>
+        <%= f.input :status, as: :select, collection: @citizen.decorate.statuses, label_method: :first, value_method: :second,
+          selected: @citizen.status, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        
+        <div class="text-muted text-center my-3 col-md-12">
+          <span> <%= @citizen.address.model_name.human %> </span>
+        </div>
+
+        <%= f.fields_for :address do |ff| %>
+          <%= ff.input :zipcode, input_html: { class: 'form-control form-control-alternative zipcode' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :residencial_number, input_html: { class: 'form-control form-control-alternative address' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :ibge_code, input_html: { class: 'form-control form-control-alternative ibge_code' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :address, input_html: { class: 'form-control form-control-alternative address_street' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :complement, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
+          <%= ff.input :neighborhood, input_html: { class: 'form-control form-control-alternative district' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :state, as: :select, collection: state_list, label_method: :second, value_method: :first,
+          selected: @citizen.address.state || nil, input_html: { class: 'form-control form-control-alternative states_select' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :city, as: :select, collection: cities_list(@citizen.address.city), label_method: :second, value_method: :first,
+          selected: @citizen.address.city || nil, input_html: { class: 'form-control form-control-alternative city_select' }, wrapper_html: { class: 'form-group col-md-4' } %>
+        <% end %>
+      </div>
+      <div class="row col-md-12 col-sm-12 col-lg-12 text-right">
+          <%= render 'layouts/common/actions/back', link: citizens_path %>
+          <%= render 'layouts/common/actions/submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

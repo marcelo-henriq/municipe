@@ -1,0 +1,16 @@
+
+pt-BR:
+  buttons:
+    back: Voltar
+    destroy:
+      text: 'Excluir'
+      confirm: 'Confirma a operação?'
+    edit: 'Alterar'
+    filter: Pesquisar
+    search: Pesquisar
+    new: 'Adicionar'
+    print: Imprimir
+    submit:
+      text: Salvar
+    actions: Ações
+    cancel: Cancelar

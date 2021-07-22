@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      citizen:
+        one: 'Cidadão'
+        other: 'Cidadãos'
+    attributes:
+      citizen:
+        name: 'Nome completo'
+        email: 'E-mail'
+        cpf: 'CPF'
+        cns: 'Cartão nacional de saúde'
+        birth_date: 'Data de nascimento'
+        country_code: 'DDI'
+        phonenumber: 'Telefone'
+        photo: 'Foto'
+        status: 'Status'
+        statuses:
+          active: 'Ativo'
+          inactive: 'Inativo'
