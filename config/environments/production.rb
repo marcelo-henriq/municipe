@@ -93,4 +93,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # first settings for mail sender
+  config.action_controller.asset_host = 'https://municipe.herokuapp.com'
+  config.action_mailer.asset_host = config.action_controller.asset_host
+
+  ActionMailer::Base.smtp_settings = {
+    address:        'smtp.gmail.com',
+    port:           '587',
+    authentication: :plain,
+    domain: 'municipe.herokuapp.com',
+    user_name:      ENV['MAIL_USERNAME'],
+    password:       ENV['MAIL_PASSWORD'],
+    enable_starttls_auto: true
+  }
 end
