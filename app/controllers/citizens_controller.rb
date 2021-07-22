@@ -1,5 +1,5 @@
 class CitizensController < ApplicationController
-  before_action :find_citizen, only: [:edit, :update]
+  before_action :find_citizen, only: [:show, :edit, :update]
   
   def index
     @citizens = CitizenPresenter.new(citizens: Citizen.order(:id), query: params[:q])
@@ -23,6 +23,9 @@ class CitizensController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update

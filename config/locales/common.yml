@@ -14,7 +14,8 @@ pt-BR:
         regular: 'Tamanho médio'
         large: 'Tamanho grande'
     buttons:
-      go_page: 'Ir para a pagina'
+      go_page: 'Ir para a página'
+      back_to_page: 'Voltar para a %{page}'
       add_button: 'Adicionar'
       filter: 'Pesquisar'
       save: 'Salvar'

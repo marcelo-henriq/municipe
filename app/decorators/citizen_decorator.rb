@@ -9,6 +9,10 @@ class CitizenDecorator < ApplicationDecorator
     CPF.new(object.cpf).formatted
   end
 
+  def pretty_cns
+    "#{object.cns[0..2]} #{object.cns[3..6]} #{object.cns[7..10]} #{object.cns[11..12]}-#{object.cns[13..14]}"
+  end
+
   def birth_date_localized
     return t('common.empty') unless object.birth_date.present?
 
@@ -17,6 +21,10 @@ class CitizenDecorator < ApplicationDecorator
 
   def pretty_address
     "#{object.address.neighborhood}, #{object.address.residencial_number} | #{object.address.city}."
+  end
+
+  def age
+    ((Time.zone.now - object.birth_date.to_time) / 1.year.seconds).floor
   end
 
   def statuses

@@ -83,8 +83,8 @@ RSpec.describe CitizensController do
   end
 
   describe 'PUT/PACTH #update' do
-    let(:citizen) {create(:citizen)}
-    
+    let(:citizen) { create(:citizen) }
+
     context 'when citizen have valid params', aggregate_failures: true do
       let(:citizen_params) { attributes_for(:citizen, name: 'Marcelo Henrique', birth_date: '1999-10-27'.to_date ) }
       it 'validate update object' do

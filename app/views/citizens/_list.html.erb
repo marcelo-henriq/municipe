@@ -1,13 +1,11 @@
 <table class="table">
   <thead>
       <tr>
-          <th class="text-center">#</th>
+          <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
           <th width="300"> <%= Citizen.human_attribute_name :name %> </th>
           <th><%= Citizen.human_attribute_name :cpf %></th>
-          <th width="150"><%= Address.human_attribute_name :address %></th>
-          <th><%= Citizen.human_attribute_name :birth_date %></th>
+          <th class="text-right"><%= Citizen.human_attribute_name :birth_date %></th>
           <th><%= Citizen.human_attribute_name :phonenumber %></th>
-          <th class="text-center" width="150"><%= Citizen.human_attribute_name :photo %></th>
           <th class="text-right"><%= Citizen.human_attribute_name :status %></th>
           <th class="text-right"> <%= t('common.links.actions.title') %> </th>
       </tr>
@@ -15,15 +13,15 @@
   <tbody>
     <% if @citizens.filtered_citizens.each do |citizen| %>
       <tr>
-        <td class="text-center"> <%= citizen.id %> </td>
+        <td class="text-center"> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
         <td> <%= citizen.name %> </td>
         <td> <%= citizen.pretty_cpf %> </td>
-        <td> <%= citizen.pretty_address %> </td>
         <td class="text-right"> <%= citizen.birth_date_localized %> </td>
         <td> <%= citizen.pretty_phonenumber %> </td>
-        <td class="text-center"> <%= image_tag citizen.photo.thumb.url, class: 'img-fluid rounded' %> </td>
         <td class="text-center"> <%= CitizenStatus.t citizen.status %> </td>
-        <td class="td-actions text-right">
+        <td class="td-actions row text-right">
+          <%= render 'layouts/common/actions/show',
+            link: citizen_path(citizen.id) %>
           <%= render 'layouts/common/actions/edit',
             link: edit_citizen_path(citizen.id) %>
         </td>

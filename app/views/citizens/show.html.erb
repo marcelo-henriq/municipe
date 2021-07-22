@@ -1,0 +1,52 @@
+<div class="container-fluid bg-secondary">
+  <section class="section bg-secondary">
+    <div class="container">
+      <h2 class="py-5"> <%= t('common.details', model: @citizen.model_name.human) %> </h2>
+      <div class="card card-profile shadow">
+        <div class="px-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-3 order-lg-2 align-self-lg-center">
+              <div class="card-profile-image mt--100" style="display: flex; justify-content: center;">
+                <%= image_tag @citizen.photo.normal.url, class: 'rounded-circle shadow', style: 'width: 180px;' %>
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+              <div class="card-profile-actions py-4 mt-lg-0">
+                <%= @citizen.class.human_attribute_name :status %>: <a href="javascript:void(0)" class="btn btn-sm btn-default mr-4"><%= CitizenStatus.t @citizen.status %></a>
+              </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 text-lg-left align-self-lg-center">
+              <div class="card-profile-stats d-flex justify-content-center">
+                <div>
+                <span class="heading"><%= @citizen.class.human_attribute_name :phonenumber %></span><br>
+                  <span class="description"> <%= @citizen.decorate.pretty_phonenumber %> </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <h3><%= @citizen.name %><span class="font-weight-light">, <%= @citizen.decorate.age %> Anos </span></h3>
+            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><%= @citizen.decorate.pretty_address %></div>
+            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i><%= @citizen.email %></div>
+            <div><i class="ni education_hat mr-2"></i>
+              <%= @citizen.class.human_attribute_name :cns %>: <%= @citizen.decorate.pretty_cns %><br>
+              <%= @citizen.class.human_attribute_name :cpf %>: <%= @citizen.decorate.pretty_cpf %>
+            </div>
+          </div>
+          <div class="mt-5 py-5 border-top text-center">
+            <div class="row justify-content-center">
+              <div class="col-lg-9">
+                <p> <%= @citizen.address.model_name.human %>: <%= @citizen.address.address %>, <%= @citizen.address.residencial_number %> | <%= @citizen.address.class.human_attribute_name :zipcode %>: <%= @citizen.address.zipcode %><br> 
+                  <%= @citizen.address.class.human_attribute_name :complement %>: <%= @citizen.address.complement %>, <%= @citizen.address.city %> - <%= @citizen.address.state %>. </p>
+                <%= link_to citizens_path do %>
+                  <i class="ni ni-bold-left text-primary"></i>
+                  <span><%= t('common.buttons.back_to_page', page: 'lista') %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
