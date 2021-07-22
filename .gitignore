@@ -18,6 +18,7 @@ public/uploads
 /storage/*
 !/storage/.keep
 
+/coverage
 /node_modules
 /yarn-error.log
 
