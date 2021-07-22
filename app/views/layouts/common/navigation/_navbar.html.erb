@@ -23,14 +23,25 @@
         </div>
       </div>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item d-none d-lg-block">
-          <a href="/" class="btn btn-primary btn-icon">
-            <span class="btn-inner--icon">
-              <i class="fa fa-home"></i>
-            </span>
-            <span class="nav-link-inner--text">Home</span>
-          </a>
-        </li>
+        <% if current_user %>
+          <li class="nav-item d-none d-lg-block">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,
+                class: 'btn btn-primary btn-icon' if current_user.present? do %>
+              <span class="btn-inner--icon">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path,
+                class: 'btn btn-outline-primary' if !current_user.present? do %>
+              <span class="btn-inner--icon">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

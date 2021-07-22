@@ -37,7 +37,9 @@
             <div class="row justify-content-center">
               <div class="col-lg-9">
                 <p> <%= @citizen.address.model_name.human %>: <%= @citizen.address.address %>, <%= @citizen.address.residencial_number %> | <%= @citizen.address.class.human_attribute_name :zipcode %>: <%= @citizen.address.zipcode %><br> 
-                  <%= @citizen.address.class.human_attribute_name :complement %>: <%= @citizen.address.complement %>, <%= @citizen.address.city %> - <%= @citizen.address.state %>. </p>
+                  <%= @citizen.address.class.human_attribute_name :complement %>: 
+                    <%= @citizen.address.complement.present? ? @citizen.address.complement : t('common.empty') %>, 
+                  <%= @citizen.address.city %> - <%= @citizen.address.state %>. </p>
                 <%= link_to citizens_path do %>
                   <i class="ni ni-bold-left text-primary"></i>
                   <span><%= t('common.buttons.back_to_page', page: 'lista') %></span>

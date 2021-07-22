@@ -9,8 +9,9 @@ class Citizen < ApplicationRecord
   validates :cns, length: { is: 15 }
   validates :email, format: URI::MailTo::EMAIL_REGEXP
   validates :phonenumber, length: { is: 11 }
-  validates :birth_date, inclusion: { in: 30.year.ago..1.day.ago, message: :out_of_range }
+  validates :birth_date, inclusion: { in: 100.year.ago..1.day.ago, message: :out_of_range }
   #custom validates
+  validates_format_of :name, with: /([\w\-\']{2,})([\s]+)([\w\-\']{2,})/, message: :invalid
   validate :valid_cpf
   validate :valid_cns
 

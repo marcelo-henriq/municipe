@@ -6,6 +6,7 @@ pt-BR:
           attributes:
             name:
               blank: 'Não pode ficar em branco'
+              invalid: 'Nome incompleto'
             email:
               blank: 'Não pode ficar em branco'
             cpf:

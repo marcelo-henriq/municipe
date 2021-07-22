@@ -29,8 +29,8 @@
           <h3 style="margin-left: 5px;">| <%= Citizen.human_attribute_name :name %>: <%= @citizen.name %></h3>
       </div>
       <p><%= Citizen.human_attribute_name :email %>: <%= @citizen.email %></p>
-      <p><%= Address.human_attribute_name :address %>: <%= @citizen.pretty_address %> </p>
-      <p><%= Citizen.human_attribute_name :phonenumber %>: <%= @citizen.pretty_phonenumber %></p>
+      <p><%= Address.human_attribute_name :address %>: <%= @citizen.decorate.pretty_address %> </p>
+      <p><%= Citizen.human_attribute_name :phonenumber %>: <%= @citizen.decorate.pretty_phonenumber %></p>
       <p>
       Att:<br>
       ----------

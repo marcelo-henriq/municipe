@@ -1,4 +1,5 @@
 class CitizensController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_citizen, only: [:show, :edit, :update]
   
   def index
@@ -14,7 +15,7 @@ class CitizensController < ApplicationController
     @citizen = Citizen.new(permitted_params)
     respond_to do |format|
       if @citizen.save
-        CitizenMailer.notify_new_citizen(@citizen).deliver_later
+        CitizenMailer.notify_new_citizen(@citizen.id).deliver_later
         format.html { redirect_to citizens_path, notice: t('notices.created') }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -31,7 +32,7 @@ class CitizensController < ApplicationController
   def update
     respond_to do |format|
       if @citizen.update(permitted_params)
-        CitizenMailer.notify_update_citizen(@citizen).deliver_later
+        CitizenMailer.notify_update_citizen(@citizen.id).deliver_later
         format.html { redirect_to citizens_path, notice: t('notices.updated') }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,0 +1,39 @@
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="container pt-lg-7">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            <div class="text-muted text-center mb-3"><small>Citizen App</small></div>
+            <div class="text-center">
+              <%= image_tag 'logo', width: '100' %>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small> <%= t('devise.actions.forgot_password') %> </small><br>
+              <span> <%= t('devise.passwords.send_instructions') %> </span>
+            </div>
+            <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <%= f.input :email, input_html: { autocomplete: "email", class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <div class="text-center">
+                <%= f.submit t('devise.actions.send_instructions'), class: "btn btn-primary mt-4" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

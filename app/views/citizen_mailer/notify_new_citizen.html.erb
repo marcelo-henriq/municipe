@@ -11,21 +11,24 @@
     </style>
   </head>
   <body>
-    <p>Welcome to plataform Sr. <%= @citizen.name %>!</p>
-    <p>
-    Citizen details<br>
-    --------------------------
-    </p>
-    <h3> 
-    <%= email_image_tag "public#{@citizen.photo.thumb.url}", class: 'rounded' %>
-      | Name: <%= @citizen.name %></h3>
-    <p>Email: <%= @citizen.email %></p>
-    <p>Address: <%= @citizen.address.city %> | <%= @citizen.address.address %> </p>
-    <p>Phone: <%= @citizen.phonenumber %></p>
-    <p>
-    Att:<br>
-    ----------
-    </p>
-    <p> <%= email_image_tag "app/assets/images/logo.png", class: 'rounded' %> </p>
+    <div class="container">
+      <p> <%=  "#{@citizen.model_name.human}: #{@citizen.name}" %>!</p>
+      <p>
+      <%= t('common.details', model: @citizen.model_name.human) %> <br>
+      --------------------------
+      </p>
+      <div class="centered">
+        <%= email_image_tag "public#{@citizen.photo.thumb.url}", class: 'rounded' %>
+          <h3 style="margin-left: 5px;">| <%= Citizen.human_attribute_name :name %>: <%= @citizen.name %></h3>
+      </div>
+      <p><%= Citizen.human_attribute_name :email %>: <%= @citizen.email %></p>
+      <p><%= Address.human_attribute_name :address %>: <%= @citizen.decorate.pretty_address %> </p>
+      <p><%= Citizen.human_attribute_name :phonenumber %>: <%= @citizen.decorate.pretty_phonenumber %></p>
+      <p>
+      Att:<br>
+      ----------
+      </p>
+      <p> <%= email_image_tag "app/assets/images/logo.png", class: 'rounded' %> </p>
+    </div>
   </body>
 </html>
