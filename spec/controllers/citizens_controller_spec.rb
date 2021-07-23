@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe CitizensController do
+  let!(:user) { create(:user) }
+  before { sign_in user }
+
   describe 'GET #index' do
     let(:citizens) { create_list(:citizen, 5) }
 
