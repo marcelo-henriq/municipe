@@ -6,7 +6,7 @@ $(document).ready(function () {
 
   //custom
   $('.text-masked').on('paste keyup keypress', function(){
-    this.value = this.value.replace(/[^a-zA-Z@]/g, '');
+    this.value = this.value.replace(/[^a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s@]/g, '');
   });
 
   $('.positivenumbers-masked').on('paste keyup keypress', function(){
