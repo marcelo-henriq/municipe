@@ -28,3 +28,6 @@ pt-BR:
         back: 'Voltar'
     confirmations:
       sure: 'Tem certeza?'
+    notifications:
+      new: 'Novo %{model} incluido no sistema!'
+      updated: '%{model} %{param} atualizado no sistema!'
