@@ -1,5 +1,6 @@
 pt-BR:
   common:
+    app_name: 'Citizen app'
     hello: 'Olá seja bem vindo!'
     empty: 'Nenhum registro encontrado'
     details: 'Detalhes do %{model}'
@@ -23,4 +24,7 @@ pt-BR:
     links:
       actions:
         title: 'Ações'
+        options: 'Opções'
         back: 'Voltar'
+    confirmations:
+      sure: 'Tem certeza?'

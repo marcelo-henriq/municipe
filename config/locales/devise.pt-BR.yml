@@ -1,6 +1,7 @@
 pt-BR:
   devise:
     confirmations:
+      waiting: "Aguardando confirmação para %{email}"
       confirmed: "Sua conta foi confirmada com sucesso."
       send_instructions: "Você receberá um email com instruções para confirmar sua conta em alguns minutos."
       send_paranoid_instructions: "Se seu endereço de email existir em nosso banco de dados, você receberá um email com instruções para confirmar sua conta em alguns minutos."
@@ -64,7 +65,14 @@ pt-BR:
           one: "1 erro impediu que %{resource} fosse salvo(a):"
           other: "%{count} erros impediram que %{resource} fosse salvo(a):"
     actions:
+      update_account: 'Atualizar conta'
+      edit_account: 'Editar %{model}'
+      cancel_account: 'Cancelar minha conta'
       sign_in: 'Logar'
       sign_up: 'Criar conta'
+      sign_out: 'Sair'
       send_instructions: 'Enviar instruções'
       forgot_password: 'Esqueceu sua senha?'
+    infos:
+      blank_password_hint: "Deixe em branco caso não queira alterar."
+      current_password_hint: "Precisamos da sua senha atual para confirmar"

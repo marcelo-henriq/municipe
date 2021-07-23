@@ -23,25 +23,30 @@
         </div>
       </div>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <% if current_user %>
-          <li class="nav-item d-none d-lg-block">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,
-                class: 'btn btn-primary btn-icon' if current_user.present? do %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javascript:;" id="nav-inner-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= t('common.links.actions.options') %></a>
+          <div class="dropdown-menu" aria-labelledby="nav-inner-primary_dropdown_1">
+            <%= link_to t('devise.actions.sign_in'), new_user_session_path,
+                class: 'dropdown-item' unless current_user.present? do %>
               <span class="btn-inner--icon">
                 <i class="fa fa-shopping-cart"></i>
               </span>
             <% end %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Sign in', new_user_session_path,
-                class: 'btn btn-outline-primary' if !current_user.present? do %>
+            <%= link_to t('devise.actions.edit_account', model: User.model_name.human), edit_user_registration_path,
+                class: 'dropdown-item' if current_user.present? do %>
               <span class="btn-inner--icon">
                 <i class="fa fa-shopping-cart"></i>
               </span>
             <% end %>
-          </li>
-        <% end %>
+            <div class="dropdown-divider"></div>
+            <%= link_to t('devise.actions.sign_out'), destroy_user_session_path, method: :get,
+                class: 'dropdown-item' if current_user.present? do %>
+              <span class="btn-inner--icon">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+            <% end %>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
