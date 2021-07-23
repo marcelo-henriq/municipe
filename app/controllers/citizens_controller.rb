@@ -2,7 +2,7 @@ class CitizensController < AdminController
   before_action :find_citizen, only: [:show, :edit, :update]
   
   def index
-    @citizens = CitizenPresenter.new(citizens: Citizen.order(:id).page(params[:page]).per(3), query: params[:q])
+    @citizens = CitizenPresenter.new(citizens: Citizen.order(:id).page(params[:page]), query: params[:q])
   end
 
   def new
