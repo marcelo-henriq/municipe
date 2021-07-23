@@ -4,6 +4,9 @@ $(document).ready(function () {
     let cep = this.value;
     let defaultStates = $('.states_select').children();
 
+    if(cep.length < 8)
+      return
+
     $.ajax({
       type: 'GET',
       url: `https://viacep.com.br/ws/${cep}/json`, //viacep

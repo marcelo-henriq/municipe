@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require argon-design
 //= require_tree .

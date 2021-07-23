@@ -9,6 +9,7 @@ pt-BR:
               invalid: 'Nome incompleto'
             email:
               blank: 'Não pode ficar em branco'
+              invalid: 'Formato de email inválido!'
             cpf:
               blank: 'Não pode ficar em branco'
               invalid: 'CPF precisa ser válido'
@@ -40,3 +41,6 @@ pt-BR:
               blank: 'Não pode ficar em branco'
             city:
               blank: 'Não pode ficar em branco'
+  errors:
+    messages:
+      extension_whitelist_error: 'Tipo de arquivo inválido!'
