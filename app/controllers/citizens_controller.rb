@@ -1,5 +1,4 @@
-class CitizensController < ApplicationController
-  before_action :authenticate_user!
+class CitizensController < AdminController
   before_action :find_citizen, only: [:show, :edit, :update]
   
   def index
