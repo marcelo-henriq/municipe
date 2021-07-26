@@ -38,6 +38,8 @@ gem 'kaminari', '~> 1.2'
 gem 'enumerate_it', '~> 3.2'
 # auth with devise
 gem 'devise', '~> 4.8'
+# adding storages integration
+gem 'fog-aws', '~> 3.10'
 # jobs async with sidekiq
 # gem 'sidekiq', '~> 6.2'
 # Use Redis adapter to run Action Cable in production
