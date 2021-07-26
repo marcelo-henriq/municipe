@@ -31,7 +31,7 @@
       --------------------------
       </p>
       <div class="centered">
-        <%= email_image_tag "public#{@citizen.photo.thumb.url}", class: 'rounded' %>
+        <%= image_tag @citizen.photo.thumb.url, class: 'rounded' %>
           <h3 style="margin-left: 5px;">| <%= Citizen.human_attribute_name :name %>: <%= @citizen.name %></h3>
       </div>
       <p><%= Citizen.human_attribute_name :email %>: <%= @citizen.email %></p>
