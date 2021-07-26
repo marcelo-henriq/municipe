@@ -5,11 +5,11 @@ $(document).ready(function () {
   Inputmask({ "mask": "99999-999", clearIncomplete: true, removeMaskOnSubmit: true }).mask('.zipcode-masked');
 
   //custom
-  $('.text-masked').on('paste keyup keypress', function(){
+  $('.blocknumbers').on('paste keyup keypress', function(){
     this.value = this.value.replace(/[^a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s@]/g, '');
   });
 
-  $('.positivenumbers-masked').on('paste keyup keypress', function(){
+  $('.positivenumbers').on('paste keyup keypress', function(){
     this.value = this.value.replace(/[^0-9@]/g, '');
   });
 });

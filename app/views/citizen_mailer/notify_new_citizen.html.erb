@@ -6,6 +6,12 @@
         width: 50px;
         height: auto;
         border: 1px, solid;
+        border-radius: 50%;
+      }
+      .img_radius{
+        width: 50px;
+        height: auto;
+        border: 1px, solid;
         border-radius: 10%;
       }
       .container {
@@ -35,7 +41,7 @@
       Att:<br>
       ----------
       </p>
-      <p> <%= email_image_tag "app/assets/images/logo.png", class: 'rounded' %> </p>
+      <p> <%= email_image_tag "app/assets/images/logo.png", class: 'img_radius' %> </p>
     </div>
   </body>
 </html>

@@ -11,6 +11,7 @@ class Citizen < ApplicationRecord
   validates :email, format: URI::MailTo::EMAIL_REGEXP
   validates :phonenumber, length: { is: 11 }
   validates :birth_date, inclusion: { in: 100.year.ago..1.day.ago, message: :out_of_range }
+  
   #custom validates
   validate :valid_cpf
   validate :valid_cns
