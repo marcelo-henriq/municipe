@@ -6,8 +6,10 @@ pt-BR:
           attributes:
             name:
               blank: 'Não pode ficar em branco'
+              invalid: 'Nome incompleto'
             email:
               blank: 'Não pode ficar em branco'
+              invalid: 'Formato de email inválido!'
             cpf:
               blank: 'Não pode ficar em branco'
               invalid: 'CPF precisa ser válido'
@@ -39,3 +41,12 @@ pt-BR:
               blank: 'Não pode ficar em branco'
             city:
               blank: 'Não pode ficar em branco'
+        user:
+          attributes:
+            email:
+              taken: 'Email já em uso!'
+  errors:
+    messages:
+      extension_whitelist_error: 'Tipo de arquivo inválido!'
+      mini_magick_processing_error: 'Não foi possivel processar, verifique o tipo!'
+      not_saved: 'Não foi possivel salvar!'

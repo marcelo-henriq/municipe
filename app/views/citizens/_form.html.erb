@@ -8,8 +8,8 @@
     </div>
     <%= simple_form_for @citizen, url: url_path, html: { class: 'citizen-form' } do |f| %>
       <div class="row">
-        <%= f.input :name, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
-        <%= f.input :email, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group  col-md-6' } %>
+        <%= f.input :name, input_html: { maxlength: 64, class: 'form-control form-control-alternative blocknumbers' }, wrapper_html: { class: 'form-group col-md-6' } %>
+        <%= f.input :email, input_html: { maxlength: 64, class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group  col-md-6' } %>
         <%= f.input :cpf, input_html: { class: 'form-control form-control-alternative cpf-masked' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :cns, input_html: { class: 'form-control form-control-alternative cns-masked' }, wrapper_html: { class: 'form-group col-md-6' } %>
         <%= f.input :photo, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
@@ -30,9 +30,9 @@
         </div>
 
         <%= f.fields_for :address do |ff| %>
-          <%= ff.input :zipcode, input_html: { class: 'form-control form-control-alternative zipcode' }, wrapper_html: { class: 'form-group col-md-4' } %>
-          <%= ff.input :residencial_number, input_html: { class: 'form-control form-control-alternative address' }, wrapper_html: { class: 'form-group col-md-4' } %>
-          <%= ff.input :ibge_code, input_html: { class: 'form-control form-control-alternative ibge_code' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :zipcode, input_html: { class: 'form-control form-control-alternative zipcode zipcode-masked' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :residencial_number, input_html: { min: 0, class: 'form-control form-control-alternative address positivenumbers' }, wrapper_html: { class: 'form-group col-md-4' } %>
+          <%= ff.input :ibge_code, input_html: { min: 0, class: 'form-control form-control-alternative ibge_code positivenumbers' }, wrapper_html: { class: 'form-group col-md-4' } %>
           <%= ff.input :address, input_html: { class: 'form-control form-control-alternative address_street' }, wrapper_html: { class: 'form-group col-md-6' } %>
           <%= ff.input :complement, input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-6' } %>
           <%= ff.input :neighborhood, input_html: { class: 'form-control form-control-alternative district' }, wrapper_html: { class: 'form-group col-md-4' } %>

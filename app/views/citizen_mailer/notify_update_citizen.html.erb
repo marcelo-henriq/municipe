@@ -6,6 +6,12 @@
         width: 50px;
         height: auto;
         border: 1px, solid;
+        border-radius: 50%;
+      }
+      .img_radius{
+        width: 50px;
+        height: auto;
+        border: 1px, solid;
         border-radius: 10%;
       }
       .container {
@@ -25,17 +31,17 @@
       --------------------------
       </p>
       <div class="centered">
-        <%= email_image_tag "public#{@citizen.photo.thumb.url}", class: 'rounded' %>
+        <%= image_tag @citizen.photo.thumb.url, class: 'rounded' %>
           <h3 style="margin-left: 5px;">| <%= Citizen.human_attribute_name :name %>: <%= @citizen.name %></h3>
       </div>
       <p><%= Citizen.human_attribute_name :email %>: <%= @citizen.email %></p>
-      <p><%= Address.human_attribute_name :address %>: <%= @citizen.pretty_address %> </p>
-      <p><%= Citizen.human_attribute_name :phonenumber %>: <%= @citizen.pretty_phonenumber %></p>
+      <p><%= Address.human_attribute_name :address %>: <%= @citizen.decorate.pretty_address %> </p>
+      <p><%= Citizen.human_attribute_name :phonenumber %>: <%= @citizen.decorate.pretty_phonenumber %></p>
       <p>
       Att:<br>
       ----------
       </p>
-      <p> <%= email_image_tag "app/assets/images/logo.png", class: 'rounded' %> </p>
+      <p> <%= email_image_tag "app/assets/images/logo.png", class: 'img_radius' %> </p>
     </div>
   </body>
 </html>

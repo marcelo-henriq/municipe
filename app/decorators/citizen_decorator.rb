@@ -1,5 +1,9 @@
 class CitizenDecorator < ApplicationDecorator
   delegate_all
+  
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
 
   def pretty_phonenumber
     "+#{object.country_code} (#{object.phonenumber[0..1]})#{object.phonenumber[2..6]}-#{object.phonenumber[7..10]}"

@@ -93,6 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # first settings for mail sender
+  config.action_mailer.default_url_options = { host: 'municipe.herokuapp.com' }
   config.action_controller.asset_host = 'https://municipe.herokuapp.com'
   config.action_mailer.asset_host = config.action_controller.asset_host
 

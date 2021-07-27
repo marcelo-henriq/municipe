@@ -1,0 +1,53 @@
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="container pt-lg-7">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            <div class="text-muted text-center mb-3"><small><%= t('common.app_name') %></small></div>
+            <div class="text-center">
+              <%= image_tag 'logo.png', width: '100' %>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="text-center text-muted mb-4">
+              <small> <%= t('devise.actions.edit_account', model: User.model_name.human) %> </small>
+            </div>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <%= f.input :name, required: false, input_html: { autocomplete: "name", class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <%= f.input :email, required: true, input_html: { autocomplete: "email", class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <%= f.input :password, placeholder: t('devise.infos.blank_password_hint'), required: false, 
+                  input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <%= f.input :password_confirmation, required: false, 
+                  input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <%= f.input :current_password, required: true, 
+                  input_html: { class: 'form-control form-control-alternative' }, wrapper_html: { class: 'form-group col-md-12' } %>
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <p><%= link_to t('devise.actions.cancel_account'), registration_path(resource_name), data: { confirm: t('common.confirmations.sure') }, method: :delete %></p>
+                    <%= link_to t('common.links.actions.back'), :back %>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <%= f.submit t('devise.actions.update_account'), class: "btn btn-primary mt-4" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
